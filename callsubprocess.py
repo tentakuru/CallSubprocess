@@ -19,7 +19,12 @@ elif index == "5":
 elif index == "6":
     command = ["mosaicesrgan104.py"]   
 elif index == "104":
+    cwdneedschange = True
+    tgpath = "" #copy your path from runGan104.py
     command = [os.path.dirname(os.getcwd()) + "\\runGan104.py", "1", sys.argv[1], sys.argv[2], "0"]
 elif index == "102":
     command = ["runGan102.py", "1"]
-subprocess.call(command, shell=True)
+if cwdneedschange:
+    subprocess.call(command, shell=True, cwd=tgpath)
+else:
+    subprocess.call(command, shell=True)
